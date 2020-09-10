@@ -4,4 +4,7 @@ CFLAGS = -g -Wall -O3
 LDLIBS =
 CC = cc
 
+clean:
+	rm $(P)
+
 $(P) : $(OBJECTS)
