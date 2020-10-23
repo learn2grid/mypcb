@@ -23,11 +23,11 @@
 #include "PCBFile.h"
 
 #ifndef CFGDIR
-#  define CFGDIR "/etc"
+#define CFGDIR "/etc"
 #endif
 
 #ifndef OUTPUTDIR
-#  define OUTPUTDIR "/tmp"
+#define OUTPUTDIR "/tmp"
 #endif
 
 //#define PCB_CONF_DIR "Root/Projects/mypcb/conf"
