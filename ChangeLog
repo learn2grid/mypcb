@@ -1,0 +1,6 @@
+- 2.0.0
+    - Update program to allow user to specify configuration and output directories while building via `make`
+    - Reorganize directories
+
+- 1.0.0
+    - First release
