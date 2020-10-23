@@ -42,6 +42,13 @@ const char *total_mtd_amount;
 const char *mtd_amount;
 
 int main(int argc, const char * argv[]) {
+    // Make sure user pass in the correct config and output directories
+    // Due to how the gcc is run inside the Makefile, the above two #define statements become useless now...
+    if (strcmp(PCB_CONF_DIR, "") == 0 || strcmp(PCB_DATA_OUTPUT_DIR, "") == 0) {
+        perror("Please specify configuration and output directories when running `make`\ne.g. make sysconfdir=$HOME/etc outputdir=$HOME/desktop all ");
+        exit(1);
+    }
+
     if (argc != 4) {
         print_usage_and_exit();
     }
