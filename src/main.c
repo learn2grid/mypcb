@@ -34,7 +34,7 @@
 //#define PCB_DATA_OUTPUT_DIR "Desktop"
 
 const char *PCB_CONF_DIR = CFGDIR;
-const char *PCB_DATA_OUTPUT_DIR OUTPUTDIR;
+const char *PCB_DATA_OUTPUT_DIR = OUTPUTDIR;
 
 const char *year;
 const char *month;
