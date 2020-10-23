@@ -6,9 +6,10 @@ mypcb: $(sources)
 	gcc -DCFGDIR="\"$(sysconfdir)\"" -DOUTPUTDIR="\"$(outputdir)\"" -g -O0 -o $@ $(sources)
 
 check: all
-	#./mypcb | grep "Hello from .*jupiter!"
-#	@echo "*** ALL TEST PASSED ***"
-	@echo "*** NOTHING TO TEST ***"
+	mkdir /tmp/etc
+	cp ../etc/mypcb.conf /tmp/etc/
+	./mypcb 2020 12 999988; ls -l /tmp/PCB_202012.txt
+	@echo "*** ALL TEST PASSED ***"
 
 install:
 	install -d $(DESTDIR)$(bindir)
@@ -18,7 +19,11 @@ uninstall:
 	rm -f $(DESTDIR)$(bindir)/mypcb
 	-rmdir $(DESTDIR)$(bindir) > /dev/null 2>&1
 
+checkclean:
+	-rm /tmp/PCB_202012.txt
+	rm -rf /tmp/etc
+
 clean:
 	-rm mypcb
 
-.PHONY: all clean check install uninstall
+.PHONY: all clean check checkclean install uninstall

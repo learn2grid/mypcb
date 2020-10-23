@@ -10,7 +10,7 @@ export prefix
 export exec_prefix
 export bindir
 
-all clean check install uninstall mypcb:
+all clean check checkclean install uninstall mypcb:
 	cd src && $(MAKE) $@
 
 
@@ -25,10 +25,12 @@ $(distdir): FORCE
 	cp Makefile $(distdir)
 	cp src/Makefile src/main.c src/Helper.c src/PCBData.c src/PCBFile.c $(distdir)/src
 	cp src/Helper.h src/PCBData.h src/PCBFile.h $(distdir)/src
+	mkdir -p $(distdir)/etc
+	cp etc/example.conf $(distdir)/etc/mypcb.conf
 
 distcheck: $(distdir).tar.gz
 	gzip -cd $(distdir).tar.gz | tar xvf -
-	cd $(distdir) && $(MAKE) all
+	cd $(distdir) && $(MAKE) sysconfdir=/tmp/etc outputdir=/tmp all
 	cd $(distdir) && $(MAKE) check
 	cd $(distdir) && $(MAKE) DESTDIR=$${PWD}/inst install
 	cd $(distdir) && $(MAKE) DESTDIR=$${PWD}/inst uninstall
@@ -41,8 +43,12 @@ distcheck: $(distdir).tar.gz
 	rm -rf $(distdir)
 	@echo "*** Package $(distdir).tar.gz is ready for distribution."
 
+distclean:
+	-rm $(distdir).tar.gz
+	rm -rf $(distdir)
+
 FORCE:
 	-rm $(distdir).tar.gz > /dev/null 2>&1
 	rm -rf $(distdir)
 
-.PHONY: FORCE all clean check dist distcheck install uninstall
+.PHONY: FORCE all clean check dist distcheck distclean install uninstall
