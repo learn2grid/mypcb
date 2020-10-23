@@ -14,7 +14,6 @@
 	Copyright (C) 2018 Lee Choon Siong
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -23,8 +22,19 @@
 #include "PCBData.h"
 #include "PCBFile.h"
 
-#define PCB_CONF_DIR "Root/Projects/mypcb/conf"
-#define PCB_DATA_OUTPUT_DIR "Desktop"
+#ifndef CFGDIR
+#  define CFGDIR "/etc"
+#endif
+
+#ifndef OUTPUTDIR
+#  define OUTPUTDIR "/tmp"
+#endif
+
+//#define PCB_CONF_DIR "Root/Projects/mypcb/conf"
+//#define PCB_DATA_OUTPUT_DIR "Desktop"
+
+const char *PCB_CONF_DIR = CFGDIR;
+const char *PCB_DATA_OUTPUT_DIR OUTPUTDIR;
 
 const char *year;
 const char *month;
