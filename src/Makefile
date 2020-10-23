@@ -3,7 +3,7 @@ all: mypcb
 sources = main.c Helper.c PCBData.c PCBFile.c
 
 mypcb: $(sources)
-	gcc -g -O0 -o $@ $(sources)
+	gcc -DCFGDIR="\"$(sysconfdir)\"" -DOUTPUTDIR="\"$(outputdir)\"" -g -O0 -o $@ $(sources)
 
 check: all
 	#./mypcb | grep "Hello from .*jupiter!"
