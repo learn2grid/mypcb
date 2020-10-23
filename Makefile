@@ -51,4 +51,4 @@ FORCE:
 	-rm $(distdir).tar.gz > /dev/null 2>&1
 	rm -rf $(distdir)
 
-.PHONY: FORCE all clean check dist distcheck distclean install uninstall
+.PHONY: FORCE all clean check checkclean dist distcheck distclean install uninstall
