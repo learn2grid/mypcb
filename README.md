@@ -20,7 +20,7 @@ Use `make` to build the program with the `Makefile` provided.
 Below example specify the user's home directory for `prefix`, `$HOME/etc` where the configuration file can be found and `$HOME/Desktop` to store the output file. Note the default configuration directory is `/etc` and the default output directory is `/tmp`.
 
 ```  
- $ make prefix=$HOME sysconfdir=$HOME/etc outputdir=$HOME/Desktop all
+$ make prefix=$HOME sysconfdir=$HOME/etc outputdir=$HOME/Desktop all
 cd src && /Applications/Xcode.app/Contents/Developer/usr/bin/make all
 gcc -DCFGDIR="\"/Users/lcs/etc\"" -DOUTPUTDIR="\"/Users/lcs/Desktop\"" -g -O0 -o mypcb main.c Helper.c PCBData.c PCBFile.c  
 ```
@@ -28,7 +28,7 @@ gcc -DCFGDIR="\"/Users/lcs/etc\"" -DOUTPUTDIR="\"/Users/lcs/Desktop\"" -g -O0 -o
 Run `make install` to install the program to the directory specified.
 
 ```
- $ make prefix=$HOME install                                         
+$ make prefix=$HOME install                                         
 cd src && /Applications/Xcode.app/Contents/Developer/usr/bin/make install
 install -d /Users/lcs/bin
 install -m 0755 mypcb /Users/lcs/bin
