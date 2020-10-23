@@ -1,8 +1,8 @@
-## About
+# About
 
-This program generates the MTD data text file required for LHDN submission (for example via online banking portal). 
+This program generates the __MTD data text file__ required for LHDN PCB submission (for example via online banking portal). 
 
-Limitation:
+#### Program Limitation
 
 - Supports only one employer number
 - Supports only one employee entry
@@ -15,25 +15,32 @@ Limitation:
 
 ### Build steps
 
-Edit `my_pcb.c` and modify the constant `PCB_CONF_DIR` to the relative path from your home directory.
+Use `make` to build the program with the `Makefile` provided.
 
-For example, if your home directory is `/home/foo`, and the configuration file is in `/home/foo/bin/mypcb/conf`, then change the `PCB_CONF_DIR` to `bin/mypcb/conf`, else you will see runtime error that the program is not able to chdir to the configuration directory.
+Below example specify the user's home directory for `prefix`, `$HOME/etc` where the configuration file can be found and `$HOME/Desktop` to store the output file. Note the default configuration directory is `/etc` and the default output directory is `/tmp`.
 
-Use make to build the program with the makefile provided.
-
-```
-$ make
-cc -g -Wall -O3   -c -o Helper.o Helper.c
-cc -g -Wall -O3   -c -o PCBData.o PCBData.c
-cc -g -Wall -O3   -c -o PCBFile.o PCBFile.c
-cc -g -Wall -O3    mypcb.c Helper.o PCBData.o PCBFile.o   -o mypcb
-
+```  
+ $ make prefix=$HOME sysconfdir=$HOME/etc outputdir=$HOME/Desktop all
+cd src && /Applications/Xcode.app/Contents/Developer/usr/bin/make all
+gcc -DCFGDIR="\"/Users/lcs/etc\"" -DOUTPUTDIR="\"/Users/lcs/Desktop\"" -g -O0 -o mypcb main.c Helper.c PCBData.c PCBFile.c  
 ```
 
-Usage example:
+Run `make install` to install the program to the directory specified.
 
 ```
-17:36:20:244 ~/Data/github/mypcb ./my_pcb
+ $ make prefix=$HOME install                                         
+cd src && /Applications/Xcode.app/Contents/Developer/usr/bin/make install
+install -d /Users/lcs/bin
+install -m 0755 mypcb /Users/lcs/bin
+ 
+$ ls -l ~/bin/mypcb
+-rwxr-xr-x  1 lcs  staff  53872 Oct 23 19:52 /Users/lcs/bin/mypcb* 
+```
+
+### Usage
+
+```
+./mypcb --help
 Usage: my_pcb YEAR MONTH PCB_AMOUNT
 
 	YEAR         from 1970 to 2020
@@ -43,9 +50,11 @@ Usage: my_pcb YEAR MONTH PCB_AMOUNT
 	e.g.
 	 PCB for 2018 Jan is $1234.56, so enter:
 	 my_pcb 2018 01 123456
+```
 
-17:36:23:244 ~/Data/github/mypcb ./my_pcb 2019 08 123456
-Data file written to /Users/cs/Desktop/PCB_201908.txt
+For example, below generate the data file for November 2020 with monthly PCB contribution 1234.56.
 
-17:36:34:244 ~/Data/github/mypcb
+```
+19:55:23 69  ./mypcb 2020 11 123456
+Data file written to /Users/lcs/Desktop/PCB_202011.txt
 ```
