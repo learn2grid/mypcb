@@ -1,5 +1,11 @@
 # ChangeLog
 
+#### 10-01-2021
+
+- 2.0.4
+  - Update max year range to 2040
+  - Add FAQ.md
+  
 #### 24-10-2020
 
 - 2.0.3
