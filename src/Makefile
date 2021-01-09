@@ -11,15 +11,15 @@ check: all
 	./mypcb 2020 12 999988; ls -l /tmp/PCB_202012.txt
 	@echo "*** ALL TEST PASSED ***"
 
-install:
+install: all
 	install -d $(DESTDIR)$(bindir)
 	install -m 0755 mypcb $(DESTDIR)$(bindir)
 
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/mypcb
-	-rmdir $(DESTDIR)$(bindir) > /dev/null 2>&1
+#	-rmdir $(DESTDIR)$(bindir) > /dev/null 2>&1
 
-checkclean:
+checkclean: clean
 	-rm /tmp/PCB_202012.txt
 	rm -rf /tmp/etc
 
