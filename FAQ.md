@@ -1,4 +1,4 @@
-## Using `make check`
+### Using `make check`
 
 > Note: We need to specify the config and output directories.
 
@@ -15,7 +15,7 @@ make: Nothing to be done for `all'.
  4:03:33 355 
 ```
 
-## Using `make checkclean`
+### Using `make checkclean`
 
 Clean up the test directories.
 
