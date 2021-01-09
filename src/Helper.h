@@ -34,7 +34,7 @@ SOFTWARE.
 #include "PCBFile.h"
 
 #define MIN_YEAR_RANGE 1970
-#define MAX_YEAR_RANGE 2020
+#define MAX_YEAR_RANGE 2040
 #define MIN_PCB 0
 #define MAX_PCB 1000000
 
