@@ -2,6 +2,8 @@
 
 #### 10-01-2021
 
+- 2.0.5
+  - Update FAQ.md
 - 2.0.4
   - Update max year range to 2040
   - Add FAQ.md
